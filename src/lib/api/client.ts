@@ -4,6 +4,8 @@ import { toApiError } from "./errors";
 const baseURL = import.meta.env.VITE_COINGECKO_API_BASE_URL;
 const apiKey = import.meta.env.VITE_COINGECKO_API_KEY;
 
+console.log(baseURL, apiKey);
+
 export const coingeckoClient = axios.create({
   baseURL,
   headers: {

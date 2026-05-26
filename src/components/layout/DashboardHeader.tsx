@@ -9,9 +9,7 @@ export function DashboardHeader() {
   return (
     <header className="flex items-center justify-between px-8 py-6">
       <div>
-        <h1 className="font-serif text-2xl font-bold text-foreground">
-          Dashboard
-        </h1>
+        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
         <p className="text-sm text-muted-foreground">
           Welcome back, {CURRENT_USER.name.split(" ")[0]}
         </p>

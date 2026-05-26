@@ -1,14 +1,17 @@
 import { LayoutDashboard } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Sidebar() {
   return (
     <aside className="flex h-screen w-60 flex-col border-r border-border bg-sidebar px-4 py-6">
       <div className="flex items-center gap-2 px-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-crypto-accent">
-          <span className="font-serif text-sm font-bold text-black">C</span>
-        </div>
-        <span className="font-sans text-lg font-semibold text-sidebar-foreground">
-          Crypto
+        <img
+          src={logo}
+          alt="Coingecko Logo"
+          className="rounded-full h-auto w-10"
+        />
+        <span className="text-lg font-bold text-sidebar-foreground">
+          Coingecko
         </span>
       </div>
 
