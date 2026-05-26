@@ -1,4 +1,4 @@
-import { THEME_DARK, THEME_LIGHT } from "@/constants.ts/app";
+import { THEME_DARK, THEME_LIGHT } from "@/lib/constants/app";
 import { create } from "zustand";
 
 type Theme = typeof THEME_LIGHT | typeof THEME_DARK;

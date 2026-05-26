@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useUIStore } from "@/store/useUIStore";
-import { THEME_DARK } from "@/constants.ts/app";
+import { THEME_DARK } from "@/lib/constants/app";
 
 export function useThemeSync() {
   const theme = useUIStore((state) => state.theme);
