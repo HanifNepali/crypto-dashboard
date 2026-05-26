@@ -1,6 +1,7 @@
+import { THEME_DARK, THEME_LIGHT } from "@/constants.ts/app";
 import { create } from "zustand";
 
-type Theme = "light" | "dark";
+type Theme = typeof THEME_LIGHT | typeof THEME_DARK;
 
 interface UIState {
   theme: Theme;
@@ -14,6 +15,7 @@ export const useUIStore = create<UIState>((set, get) => ({
   theme: "dark",
   selectedCoinId: "bitcoin",
   setTheme: (theme) => set({ theme }),
-  toggleTheme: () => set({ theme: get().theme === "dark" ? "light" : "dark" }),
+  toggleTheme: () =>
+    set({ theme: get().theme === THEME_DARK ? THEME_LIGHT : THEME_DARK }),
   setSelectedCoinId: (coinId) => set({ selectedCoinId: coinId }),
 }));
