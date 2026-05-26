@@ -6,6 +6,6 @@ export function useGlobalMarket() {
   return useQuery({
     queryKey: globalMarketKeys.all,
     queryFn: fetchGlobalMarket,
-    refetchInterval: 60_000,
+    refetchInterval: 60_000, //60 seconds
   });
 }

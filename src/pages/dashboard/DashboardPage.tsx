@@ -1,6 +1,7 @@
 import { AppShell } from "@/components/layout/AppShell";
 import { PanelGrid } from "@/components/layout/PanelGrid";
 import { HeroMetricBar } from "@/features/global-market";
+import { TopCryptocurrencies } from "@/features/top-cryptocurrencies";
 
 export function DashboardPage() {
   return (
@@ -9,6 +10,7 @@ export function DashboardPage() {
         primary={
           <>
             <HeroMetricBar />
+            <TopCryptocurrencies />
             <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
               Remaining primary-panel sections come next
             </div>
