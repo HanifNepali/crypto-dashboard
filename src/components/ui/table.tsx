@@ -68,7 +68,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
     <th
       data-slot="table-head"
       className={cn(
-        "h-10 px-2 text-left align-middle font-semibold whitespace-nowrap text-foreground has-[[role=checkbox]]:pr-",
+        "h-10 px-3 xl:px-4 text-left align-middle font-semibold whitespace-nowrap text-foreground has-[[role=checkbox]]:pr-",
         className,
       )}
       {...props}

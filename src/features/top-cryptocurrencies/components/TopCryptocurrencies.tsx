@@ -6,6 +6,7 @@ import { CoinIcon } from "@/components/shared/CoinIcon";
 import { useTopCryptocurrencies } from "../hooks/useTopCryptocurrencies";
 import { formatCurrency, formatCompactCurrency } from "@/lib/formatters";
 import type { CoinMarket } from "@/lib/api/schemas/coinMarket.schema";
+import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const columns: DataTableColumn<CoinMarket>[] = [
   {
@@ -59,15 +60,15 @@ export function TopCryptocurrencies() {
   const { data, isPending, isError, refetch } = useTopCryptocurrencies();
 
   return (
-    <section className="rounded-xl border border-border bg-card shadow-lg">
-      <div className="flex items-center justify-between px-5 py-4">
-        <h2 className="text-lg font-bold text-foreground">
-          Top Cryptocurrencies
-        </h2>
-        <a href="#" className="text-sm text-crypto-accent hover:underline">
-          View all
-        </a>
-      </div>
+    <section className="rounded-xl border border-border bg-card shadow-md">
+      <SectionHeading className="px-5 py-4">
+        <SectionHeading.Title>Top Cryptocurrencies</SectionHeading.Title>
+        <SectionHeading.Actions>
+          <a href="#" className="text-sm text-crypto-accent hover:underline">
+            View all
+          </a>
+        </SectionHeading.Actions>
+      </SectionHeading>
 
       {isPending && <TableSkeleton rows={5} cols={5} />}
 
