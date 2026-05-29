@@ -12,7 +12,7 @@ export function TableSkeleton({
       {Array.from({ length: rows }).map((_, r) => (
         <div key={r} className="flex items-center gap-4">
           {Array.from({ length: cols }).map((_, c) => (
-            <Skeleton key={c} className="h-13 flex-1" />
+            <Skeleton key={c} className="h-12 flex-1" />
           ))}
         </div>
       ))}

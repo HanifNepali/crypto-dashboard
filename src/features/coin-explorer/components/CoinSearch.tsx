@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Search } from "lucide-react";
 import { CoinIcon } from "@/components/shared/CoinIcon";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useCoinSearch } from "../hooks/useCoinSearch";
 import { useUIStore } from "@/store/useUIStore";
+import { SearchInput } from "@/components/shared/SearchInput";
 
 export function CoinSearch() {
   const [query, setQuery] = useState("");
@@ -38,8 +38,7 @@ export function CoinSearch() {
 
   return (
     <div ref={containerRef} className="relative">
-      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-      <input
+      <SearchInput
         role="combobox"
         aria-expanded={isOpen && shouldSearch}
         aria-controls="coin-search-results"
@@ -51,7 +50,6 @@ export function CoinSearch() {
         }}
         onFocus={() => setIsOpen(true)}
         placeholder="Search cryptocurrency..."
-        className="w-full rounded-lg border border-border bg-background py-3 pl-9 pr-3 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
       />
 
       {isOpen && shouldSearch && (
