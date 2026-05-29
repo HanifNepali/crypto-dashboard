@@ -3,6 +3,9 @@ import { create } from "zustand";
 
 type Theme = typeof THEME_LIGHT | typeof THEME_DARK;
 
+const INITIAL_THEME: Theme = THEME_DARK;
+const INITIAL_COIN_ID = "bitcoin";
+
 interface UIState {
   theme: Theme;
   selectedCoinId: string;
@@ -12,8 +15,8 @@ interface UIState {
 }
 
 export const useUIStore = create<UIState>((set, get) => ({
-  theme: "dark",
-  selectedCoinId: "bitcoin",
+  theme: INITIAL_THEME,
+  selectedCoinId: INITIAL_COIN_ID,
   setTheme: (theme) => set({ theme }),
   toggleTheme: () =>
     set({ theme: get().theme === THEME_DARK ? THEME_LIGHT : THEME_DARK }),
