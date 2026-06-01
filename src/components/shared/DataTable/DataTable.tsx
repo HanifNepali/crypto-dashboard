@@ -10,7 +10,7 @@ import {
 
 export interface DataTableColumn<T> {
   key: string;
-  header: string;
+  header: string | ReactNode;
   align?: "left" | "right";
   cell: (row: T) => ReactNode;
 }
