@@ -12,6 +12,8 @@ export const coinMarketSchema = z.object({
   price_change_percentage_24h: z.number().nullable(),
   price_change_percentage_24h_in_currency: z.number().nullable().optional(),
   sparkline_in_7d: z.object({ price: z.array(z.number()) }).optional(),
+  price_change_percentage_7d_in_currency: z.number().nullable().optional(),
+  circulating_supply: z.number().nullable().optional(),
 });
 
 export const coinMarketsResponseSchema = z.array(coinMarketSchema);
