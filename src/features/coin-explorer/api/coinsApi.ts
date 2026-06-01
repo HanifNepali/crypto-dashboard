@@ -7,7 +7,7 @@ import {
 import {
   searchResponseSchema,
   type SearchCoin,
-} from "../schemas/search.schema";
+} from "@/lib/api/schemas/search.schema";
 
 export async function fetchCoin(id: string): Promise<CoinDetail> {
   const { data } = await coingeckoClient.get(`/coins/${id}`, {
