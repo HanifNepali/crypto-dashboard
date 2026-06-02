@@ -11,7 +11,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 const columns: DataTableColumn<CoinMarket>[] = [
   {
     key: "rank",
-    header: "No.",
+    header: "#",
     cell: (coin) => (
       <span className="text-muted-foreground">{coin.market_cap_rank}</span>
     ),
