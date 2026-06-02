@@ -2,6 +2,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { PanelGrid } from "@/components/layout/PanelGrid";
 import { CoinExplorerSection } from "@/features/coin-explorer";
 import { HeroMetricBar } from "@/features/global-market";
+import { MarketExplorerSection } from "@/features/market-explorer/components/MarketExplorerSection";
 import { MarketMovers } from "@/features/market-movers";
 import { TopCryptocurrencies } from "@/features/top-cryptocurrencies";
 
@@ -15,6 +16,7 @@ export function DashboardPage() {
             <TopCryptocurrencies />
             <MarketMovers />
             <CoinExplorerSection />
+            <MarketExplorerSection />
             <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
               Remaining primary-panel sections come next
             </div>
