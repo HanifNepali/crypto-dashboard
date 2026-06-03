@@ -10,6 +10,7 @@ import { CoinSummary } from "./CoinSummary";
 import { TimeRangeTabs } from "./TimeRangeTabs";
 import { PriceChart } from "./PriceChart";
 import { CHART_RANGE_DAYS, type ChartRange } from "../types/chartRange.types";
+import { Section } from "@/components/layout/Section";
 
 export function CoinExplorerSection() {
   const selectedCoinId = useUIStore((s) => s.selectedCoinId);
@@ -30,7 +31,7 @@ export function CoinExplorerSection() {
   } = useCoinMarketChart(selectedCoinId, CHART_RANGE_DAYS[range]);
 
   return (
-    <section className="rounded-xl border border-border bg-card p-5">
+    <Section className="p-5">
       <SectionHeading className="mb-4">
         <SectionHeading.Title>Coin Explorer</SectionHeading.Title>
       </SectionHeading>
@@ -79,6 +80,6 @@ export function CoinExplorerSection() {
         )}
         {chart && <PriceChart chart={chart} />}
       </div>
-    </section>
+    </Section>
   );
 }

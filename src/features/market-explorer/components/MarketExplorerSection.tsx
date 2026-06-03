@@ -15,6 +15,7 @@ import {
   type SortDirection,
 } from "../types/marketExplorer.types";
 import { SEARCH_PAGE_SIZE, BROWSE_PAGE_SIZE, COLUMN_DEFS } from "../constants";
+import { Section } from "@/components/layout/Section";
 
 const DEFAULT_VISIBLE_COLUMNS: ColumnKey[] = COLUMN_DEFS.filter(
   (c) => c.defaultVisible,
@@ -112,7 +113,7 @@ export function MarketExplorerSection() {
   }
 
   return (
-    <section className="rounded-xl border border-border bg-card">
+    <Section>
       <div className="flex flex-col gap-4 p-5">
         <SectionHeading>
           <SectionHeading.Title>Market Data Explorer</SectionHeading.Title>
@@ -165,6 +166,6 @@ export function MarketExplorerSection() {
           </div>
         </>
       )}
-    </section>
+    </Section>
   );
 }

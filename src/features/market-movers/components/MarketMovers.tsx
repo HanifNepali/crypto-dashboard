@@ -4,6 +4,7 @@ import { ListItemSkeleton } from "@/components/shared/LoadingSkeleton";
 import { useMarketMovers } from "../hooks/useMarketMovers";
 import { MoverListItem } from "./MoverListItem";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Section } from "@/components/layout/Section";
 
 const TopGainersHeader = () => (
   <SectionHeading className="mb-3">
@@ -17,9 +18,11 @@ const TopLosersHeader = () => (
 );
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-xl border border-border bg-card p-4 shadow-md">
-    {children}
-  </div>
+  <Section className="p-4">{children}</Section>
+);
+
+const SectionLayout = ({ children }: { children: React.ReactNode }) => (
+  <section className="grid lg:grid-cols-2 gap-6">{children}</section>
 );
 
 export function MarketMovers() {
@@ -27,7 +30,7 @@ export function MarketMovers() {
 
   if (isPending) {
     return (
-      <section className="grid grid-cols-2 gap-6">
+      <SectionLayout>
         <Wrapper>
           <TopGainersHeader />
           <ListItemSkeleton rows={5} />
@@ -37,20 +40,28 @@ export function MarketMovers() {
           <TopLosersHeader />
           <ListItemSkeleton rows={5} />
         </Wrapper>
-      </section>
+      </SectionLayout>
     );
   }
 
   if (isError || !data) {
     return (
-      <Wrapper>
-        <ErrorState message="Failed to load market movers." onRetry={refetch} />
-      </Wrapper>
+      <SectionLayout>
+        <Wrapper>
+          <TopGainersHeader />
+          <ErrorState message="Failed to load Top Gainers." onRetry={refetch} />
+        </Wrapper>
+
+        <Wrapper>
+          <TopLosersHeader />
+          <ErrorState message="Failed to load Top Losers." onRetry={refetch} />
+        </Wrapper>
+      </SectionLayout>
     );
   }
 
   return (
-    <section className="grid grid-cols-2 gap-6">
+    <SectionLayout>
       <Wrapper>
         <TopGainersHeader />
         <Separator className="mb-1" />
@@ -66,6 +77,6 @@ export function MarketMovers() {
           <MoverListItem key={coin.id} coin={coin} />
         ))}
       </Wrapper>
-    </section>
+    </SectionLayout>
   );
 }

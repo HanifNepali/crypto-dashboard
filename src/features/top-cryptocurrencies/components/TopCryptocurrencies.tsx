@@ -7,6 +7,7 @@ import { useTopCryptocurrencies } from "../hooks/useTopCryptocurrencies";
 import { formatCurrency, formatCompactCurrency } from "@/lib/formatters";
 import type { CoinMarket } from "@/lib/api/schemas/coinMarket.schema";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Section } from "@/components/layout/Section";
 
 const columns: DataTableColumn<CoinMarket>[] = [
   {
@@ -60,7 +61,7 @@ export function TopCryptocurrencies() {
   const { data, isPending, isError, refetch } = useTopCryptocurrencies();
 
   return (
-    <section className="rounded-xl border border-border bg-card shadow-md">
+    <Section>
       <SectionHeading className="px-5 py-4">
         <SectionHeading.Title>Top Cryptocurrencies</SectionHeading.Title>
         <SectionHeading.Actions>
@@ -88,6 +89,6 @@ export function TopCryptocurrencies() {
           getRowKey={(coin) => coin.id}
         />
       )}
-    </section>
+    </Section>
   );
 }
