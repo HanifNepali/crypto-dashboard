@@ -86,7 +86,7 @@ export function MarketCategoriesSection() {
       {data && (
         <div className="flex flex-col items-center gap-4 p-5 sm:flex-row sm:gap-6">
           <div
-            className="relative h-50 w-50 shrink-0"
+            className="relative h-55 w-55 shrink-0"
             role="img"
             aria-label={`Donut chart of market cap share by category, out of ${formatCompactCurrency(total)} total across shown categories`}
           >
@@ -141,16 +141,13 @@ export function MarketCategoriesSection() {
             </div>
           </div>
 
-          <ul className="flex w-full flex-1 flex-col gap-2">
+          <ul>
             {slices.map((slice, i) => {
               const pct =
                 total > 0 ? ((slice.market_cap / total) * 100).toFixed(1) : "0";
               return (
-                <li
-                  key={slice.id}
-                  className="flex items-center justify-between gap-2 text-sm"
-                >
-                  <span className="flex items-center gap-2 truncate">
+                <li key={slice.id} className="text-sm mb-2">
+                  <span className="flex items-center mb-1 gap-2 truncate">
                     <span
                       aria-hidden="true"
                       className="h-2.5 w-2.5 shrink-0 rounded-full"

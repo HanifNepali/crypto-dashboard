@@ -14,10 +14,12 @@ export function DashboardPage() {
         primary={
           <>
             <HeroMetricBar />
-            <TopCryptocurrencies />
-            <MarketCategoriesSection />
-            <MarketMovers />
+            <section className="grid lg:grid-cols-2 gap-6">
+              <TopCryptocurrencies />
+              <MarketCategoriesSection />
+            </section>
             <CoinExplorerSection />
+            <MarketMovers />
             <MarketExplorerSection />
           </>
         }
