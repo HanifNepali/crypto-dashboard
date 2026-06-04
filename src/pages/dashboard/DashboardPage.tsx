@@ -2,6 +2,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { PanelGrid } from "@/components/layout/PanelGrid";
 import { CoinExplorerSection } from "@/features/coin-explorer";
 import { HeroMetricBar } from "@/features/global-market";
+import { LivePrices } from "@/features/live-prices/components/LivePrices";
 import { MarketCategoriesSection } from "@/features/market-categories";
 import { MarketExplorerSection } from "@/features/market-explorer/components/MarketExplorerSection";
 import { MarketMovers } from "@/features/market-movers";
@@ -24,9 +25,12 @@ export function DashboardPage() {
           </>
         }
         secondary={
-          <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
-            Secondary panel (1/4)
-          </div>
+          <>
+            <LivePrices />
+            <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
+              Secondary panel (1/4)
+            </div>
+          </>
         }
       />
     </AppShell>
