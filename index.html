@@ -3,8 +3,14 @@
   <head>
     <script>
       (function () {
-        var theme = "dark"; // matches Zustand's default
-        document.documentElement.classList.toggle("dark", theme === "dark");
+        var stored = localStorage.getItem('coingecko-dashboard-theme');
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
       })();
     </script>
     <meta charset="UTF-8" />
