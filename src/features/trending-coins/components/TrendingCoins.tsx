@@ -3,6 +3,7 @@ import { ErrorState } from "@/components/shared/ErrorState";
 import { ListItemSkeleton } from "@/components/shared/LoadingSkeleton";
 import { useTrendingCoins } from "../hooks/useTrendingCoins";
 import { TrendingListItem } from "./TrendingListItem";
+import { Section } from "@/components/layout/Section";
 
 const DISPLAY_COUNT = 5;
 
@@ -10,7 +11,7 @@ export function TrendingCoins() {
   const { data, isPending, isError, refetch } = useTrendingCoins();
 
   return (
-    <section className="rounded-xl border border-border bg-card p-5">
+    <Section className="p-5 mb-4">
       <SectionHeading className="mb-2">
         <SectionHeading.Title size="sub">Trending Coins</SectionHeading.Title>
       </SectionHeading>
@@ -31,6 +32,6 @@ export function TrendingCoins() {
           ))}
         </div>
       )}
-    </section>
+    </Section>
   );
 }

@@ -3,12 +3,13 @@ import { ErrorState } from "@/components/shared/ErrorState";
 import { ListItemSkeleton } from "@/components/shared/LoadingSkeleton";
 import { useLivePrices } from "../hooks/useLivePrices";
 import { PriceListItem } from "./PriceListItem";
+import { Section } from "@/components/layout/Section";
 
 export function LivePrices() {
   const { data, isPending, isError, refetch } = useLivePrices();
 
   return (
-    <section className="rounded-xl border border-border bg-card p-5">
+    <Section className="p-5">
       <SectionHeading className="mb-2">
         <SectionHeading.Title size="sub">Live Prices</SectionHeading.Title>
       </SectionHeading>
@@ -26,6 +27,6 @@ export function LivePrices() {
           ))}
         </div>
       )}
-    </section>
+    </Section>
   );
 }

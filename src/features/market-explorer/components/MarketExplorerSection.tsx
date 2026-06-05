@@ -113,7 +113,7 @@ export function MarketExplorerSection() {
   }
 
   return (
-    <Section>
+    <Section className="mb-4">
       <div className="flex flex-col gap-4 p-5">
         <SectionHeading>
           <SectionHeading.Title>Market Data Explorer</SectionHeading.Title>
