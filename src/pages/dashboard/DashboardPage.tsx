@@ -7,6 +7,7 @@ import { MarketCategoriesSection } from "@/features/market-categories";
 import { MarketExplorerSection } from "@/features/market-explorer/components/MarketExplorerSection";
 import { MarketMovers } from "@/features/market-movers";
 import { TopCryptocurrencies } from "@/features/top-cryptocurrencies";
+import { TrendingCoins } from "@/features/trending-coins/components/TrendingCoins";
 
 export function DashboardPage() {
   return (
@@ -27,9 +28,7 @@ export function DashboardPage() {
         secondary={
           <>
             <LivePrices />
-            <div className="rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">
-              Secondary panel (1/4)
-            </div>
+            <TrendingCoins />
           </>
         }
       />
