@@ -4,11 +4,11 @@ import { DashboardHeader } from "./DashboardHeader";
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex h-screen overflow-hidden bg-background">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex flex-1 flex-col overflow-hidden">
         <DashboardHeader />
-        {children}
+        <div className="flex-1 overflow-hidden">{children}</div>
       </div>
     </div>
   );

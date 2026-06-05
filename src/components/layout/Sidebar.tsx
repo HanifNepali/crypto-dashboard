@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png";
 
 export function Sidebar() {
   return (
-    <aside className="flex h-screen w-60 flex-col border-r border-border bg-sidebar px-4 py-6">
+    <aside className="flex h-full w-60 flex-col border-r border-border bg-sidebar px-4 py-6">
       <div className="flex items-center gap-2 px-2">
         <img
           src={logo}
