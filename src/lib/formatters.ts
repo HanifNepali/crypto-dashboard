@@ -1,15 +1,16 @@
-export function formatCompactCurrency(value: number, currency = "USD"): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
+export function formatCompactCurrency(value: number, currency = 'USD'): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
     currency,
-    notation: "compact",
+    notation: 'compact',
+    minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(value);
 }
 
 export function formatCompactNumber(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    notation: "compact",
+  return new Intl.NumberFormat('en-US', {
+    notation: 'compact',
     maximumFractionDigits: 2,
   }).format(value);
 }
@@ -19,9 +20,9 @@ export function formatPercentage(value: number, digits = 2): string {
 }
 
 export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
     minimumFractionDigits: value < 1 ? 4 : 2,
     maximumFractionDigits: value < 1 ? 6 : 2,
   }).format(value);
