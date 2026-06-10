@@ -1,20 +1,13 @@
-import { ArrowUpDown } from "lucide-react";
-import { DataTable, type DataTableColumn } from "@/components/shared/DataTable";
-import { CoinIcon } from "@/components/shared/CoinIcon";
-import { DeltaBadge } from "@/components/shared/DeltaBadge";
-import { Sparkline } from "@/components/shared/Sparkline";
-import {
-  formatCurrency,
-  formatCompactCurrency,
-  formatCompactNumber,
-} from "@/lib/formatters";
-import { useUIStore } from "@/store/useUIStore";
-import type { CoinMarket } from "@/lib/api/schemas/coinMarket.schema";
-import type {
-  ColumnKey,
-  SortDirection,
-  SortKey,
-} from "../types/marketExplorer.types";
+import { ArrowUpDown } from 'lucide-react';
+import { DataTable, type DataTableColumn } from '@/components/shared/DataTable';
+import { CoinIcon } from '@/components/shared/CoinIcon';
+import { DeltaBadge } from '@/components/shared/DeltaBadge';
+import { Sparkline } from '@/components/shared/Sparkline';
+import { formatCurrency, formatCompactCurrency, formatCompactNumber } from '@/lib/formatters';
+import { useUIStore } from '@/store/useUIStore';
+import type { CoinMarket } from '@/lib/api/schemas/coinMarket.schema';
+import type { ColumnKey, SortDirection, SortKey } from '../types/marketExplorer.types';
+import { CoinDetail, CoinWrapper } from '@/components/shared/CoinMetaData';
 
 interface MarketTableProps {
   coins: CoinMarket[];
@@ -45,15 +38,9 @@ function SortableHeader({
       className="inline-flex items-center gap-2 text-xs font-medium uppercase text-muted-foreground hover:text-foreground"
     >
       {label}
-      <ArrowUpDown
-        className={`h-3.5 w-3.5 ${isActive ? "text-crypto-accent" : ""}`}
-      />
+      <ArrowUpDown className={`h-3.5 w-3.5 ${isActive ? 'text-crypto-accent' : ''}`} />
       <span className="sr-only">
-        {isActive
-          ? direction === "asc"
-            ? "sorted ascending"
-            : "sorted descending"
-          : "not sorted"}
+        {isActive ? (direction === 'asc' ? 'sorted ascending' : 'sorted descending') : 'not sorted'}
       </span>
     </button>
   );
@@ -70,7 +57,7 @@ export function MarketTable({
 
   const columns: DataTableColumn<CoinMarket>[] = [
     {
-      key: "rank",
+      key: 'rank',
       header: (
         <SortableHeader
           label="#"
@@ -80,66 +67,57 @@ export function MarketTable({
           onSort={onSort}
         />
       ),
-      cell: (coin) => (
-        <span className="text-muted-foreground">
-          {coin.market_cap_rank ?? "—"}
-        </span>
-      ),
+      cell: (coin) => <span className="text-muted-foreground">{coin.market_cap_rank ?? '—'}</span>,
     },
     {
-      key: "coin",
-      header: "Coin",
+      key: 'coin',
+      header: 'Coin',
       cell: (coin) => (
-        <div className="flex items-center gap-2">
+        <CoinWrapper>
           <CoinIcon src={coin.image} alt={coin.name} />
-          <div>
-            <p className="font-medium text-foreground">{coin.name}</p>
-            <p className="text-xs uppercase text-muted-foreground">
-              {coin.symbol}
-            </p>
-          </div>
-        </div>
+          <CoinDetail name={coin.name} symbol={coin.symbol} />
+        </CoinWrapper>
       ),
     },
     {
-      key: "price",
-      header: "Price",
-      align: "right",
+      key: 'price',
+      header: 'Price',
+      align: 'right',
       cell: (coin) => formatCurrency(coin.current_price),
     },
   ];
 
-  if (visibleColumns.has("change24h")) {
+  if (visibleColumns.has('change24h')) {
     columns.push({
-      key: "change24h",
-      header: "24h",
-      align: "right",
+      key: 'change24h',
+      header: '24h',
+      align: 'right',
       cell: (coin) =>
         coin.price_change_percentage_24h !== null ? (
           <DeltaBadge value={coin.price_change_percentage_24h} />
         ) : (
-          "—"
+          '—'
         ),
     });
   }
 
-  if (visibleColumns.has("change7d")) {
+  if (visibleColumns.has('change7d')) {
     columns.push({
-      key: "change7d",
-      header: "7d",
-      align: "right",
+      key: 'change7d',
+      header: '7d',
+      align: 'right',
       cell: (coin) =>
         coin.price_change_percentage_7d_in_currency != null ? (
           <DeltaBadge value={coin.price_change_percentage_7d_in_currency} />
         ) : (
-          "—"
+          '—'
         ),
     });
   }
 
-  if (visibleColumns.has("marketCap")) {
+  if (visibleColumns.has('marketCap')) {
     columns.push({
-      key: "marketCap",
+      key: 'marketCap',
       header: (
         <SortableHeader
           label="Market Cap"
@@ -149,14 +127,14 @@ export function MarketTable({
           onSort={onSort}
         />
       ),
-      align: "right",
+      align: 'right',
       cell: (coin) => formatCompactCurrency(coin.market_cap),
     });
   }
 
-  if (visibleColumns.has("volume")) {
+  if (visibleColumns.has('volume')) {
     columns.push({
-      key: "volume",
+      key: 'volume',
       header: (
         <SortableHeader
           label="Volume 24h"
@@ -166,28 +144,26 @@ export function MarketTable({
           onSort={onSort}
         />
       ),
-      align: "right",
+      align: 'right',
       cell: (coin) => formatCompactCurrency(coin.total_volume),
     });
   }
 
-  if (visibleColumns.has("circulatingSupply")) {
+  if (visibleColumns.has('circulatingSupply')) {
     columns.push({
-      key: "circulatingSupply",
-      header: "Circulating Supply",
-      align: "right",
+      key: 'circulatingSupply',
+      header: 'Circulating Supply',
+      align: 'right',
       cell: (coin) =>
-        coin.circulating_supply != null
-          ? formatCompactNumber(coin.circulating_supply)
-          : "—",
+        coin.circulating_supply != null ? formatCompactNumber(coin.circulating_supply) : '—',
     });
   }
 
-  if (visibleColumns.has("sparkline")) {
+  if (visibleColumns.has('sparkline')) {
     columns.push({
-      key: "sparkline",
-      header: "7d Chart",
-      align: "right",
+      key: 'sparkline',
+      header: '7d Chart',
+      align: 'right',
       cell: (coin) => <Sparkline data={coin.sparkline_in_7d?.price ?? []} />,
     });
   }

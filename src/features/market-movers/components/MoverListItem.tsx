@@ -1,20 +1,16 @@
-import { CoinIcon } from "@/components/shared/CoinIcon";
-import { DeltaBadge } from "@/components/shared/DeltaBadge";
-import { formatCurrency } from "@/lib/formatters";
-import type { CoinMarket } from "@/lib/api/schemas/coinMarket.schema";
+import { CoinIcon } from '@/components/shared/CoinIcon';
+import { DeltaBadge } from '@/components/shared/DeltaBadge';
+import { formatCurrency } from '@/lib/formatters';
+import type { CoinMarket } from '@/lib/api/schemas/coinMarket.schema';
+import { CoinDetail, CoinWrapper } from '@/components/shared/CoinMetaData';
 
 export function MoverListItem({ coin }: { coin: CoinMarket }) {
   return (
     <div className="flex items-center justify-between py-2">
-      <div className="flex items-center gap-2">
+      <CoinWrapper>
         <CoinIcon src={coin.image} alt={coin.name} />
-        <div>
-          <p className="text-sm font-medium text-foreground">{coin.name}</p>
-          <p className="text-xs uppercase text-muted-foreground">
-            {coin.symbol}
-          </p>
-        </div>
-      </div>
+        <CoinDetail name={coin.name} symbol={coin.symbol} />
+      </CoinWrapper>
       <div className="flex items-end gap-2">
         <span className="text-sm font-medium text-foreground">
           {formatCurrency(coin.current_price)}
