@@ -59,7 +59,7 @@ export function TopCryptocurrencies() {
       <SectionHeading className="px-5 py-4">
         <SectionHeading.Title>Top Cryptocurrencies</SectionHeading.Title>
         <SectionHeading.Actions>
-          <a href="#" className="text-sm text-crypto-accent hover:underline">
+          <a href="#" className="text-sm text-accent-ink hover:underline">
             View all
           </a>
         </SectionHeading.Actions>
