@@ -1,29 +1,24 @@
-import { SectionHeading } from "@/components/shared/SectionHeading";
-import { ErrorState } from "@/components/shared/ErrorState";
-import { ListItemSkeleton } from "@/components/shared/LoadingSkeleton";
-import { useTrendingCoins } from "../hooks/useTrendingCoins";
-import { TrendingListItem } from "./TrendingListItem";
-import { Section } from "@/components/layout/Section";
+import { SectionHeading } from '@/components/shared/SectionHeading';
+import { ErrorState } from '@/components/shared/ErrorState';
+import { ListItemSkeleton } from '@/components/shared/LoadingSkeleton';
+import { useTrendingCoins } from '../hooks/useTrendingCoins';
+import { TrendingListItem } from './TrendingListItem';
+import { Section } from '@/components/layout/Section';
 
-const DISPLAY_COUNT = 5;
+const DISPLAY_COUNT = 6;
 
 export function TrendingCoins() {
   const { data, isPending, isError, refetch } = useTrendingCoins();
 
   return (
-    <Section className="p-5 mb-4">
+    <Section className="p-5 xl:mb-4">
       <SectionHeading className="mb-2">
         <SectionHeading.Title size="sub">Trending Coins</SectionHeading.Title>
       </SectionHeading>
 
       {isPending && <ListItemSkeleton rows={DISPLAY_COUNT} />}
 
-      {isError && (
-        <ErrorState
-          message="Failed to load trending coins."
-          onRetry={refetch}
-        />
-      )}
+      {isError && <ErrorState message="Failed to load trending coins." onRetry={refetch} />}
 
       {data && (
         <div className="flex flex-col divide-y divide-border">

@@ -1,18 +1,12 @@
-import { LayoutDashboard } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { LayoutDashboard } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 export function Sidebar() {
   return (
-    <aside className="flex h-full w-60 flex-col border-r border-border bg-sidebar px-4 py-6">
+    <aside className="hidden 2xl:flex h-full w-60 flex-col border-r border-border bg-sidebar px-4 py-6">
       <div className="flex items-center gap-2 px-2">
-        <img
-          src={logo}
-          alt="Coingecko Logo"
-          className="rounded-full h-auto w-10"
-        />
-        <span className="text-lg font-bold text-sidebar-foreground">
-          Coingecko
-        </span>
+        <img src={logo} alt="Coingecko Logo" className="rounded-full h-auto w-10" />
+        <span className="text-lg font-bold text-sidebar-foreground">Coingecko</span>
       </div>
 
       <nav className="mt-8 flex flex-col gap-1">

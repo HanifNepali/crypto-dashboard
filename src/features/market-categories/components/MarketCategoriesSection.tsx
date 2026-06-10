@@ -1,14 +1,14 @@
-import { useMemo } from "react";
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { SectionHeading } from "@/components/shared/SectionHeading";
-import { ErrorState } from "@/components/shared/ErrorState";
-import { Skeleton } from "@/components/ui/skeleton";
-import { DeltaBadge } from "@/components/shared/DeltaBadge";
-import { useMarketCategories } from "../hooks/useMarketCategories";
-import { formatCompactCurrency } from "@/lib/formatters";
-import { CATEGORY_CHART_COLORS } from "../constants";
-import type { CategoryMarket } from "../schemas/categories.schema";
-import { Section } from "@/components/layout/Section";
+import { useMemo } from 'react';
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import { SectionHeading } from '@/components/shared/SectionHeading';
+import { ErrorState } from '@/components/shared/ErrorState';
+import { Skeleton } from '@/components/ui/skeleton';
+import { DeltaBadge } from '@/components/shared/DeltaBadge';
+import { useMarketCategories } from '../hooks/useMarketCategories';
+import { formatCompactCurrency } from '@/lib/formatters';
+import { CATEGORY_CHART_COLORS } from '../constants';
+import type { CategoryMarket } from '../schemas/categories.schema';
+import { Section } from '@/components/layout/Section';
 
 const TOP_N = 5;
 
@@ -24,7 +24,7 @@ function buildSlices(categories: CategoryMarket[]): {
   total: number;
 } {
   const withCap = categories.filter(
-    (c): c is CategoryMarket & { market_cap: number } => c.market_cap != null,
+    (c): c is CategoryMarket & { market_cap: number } => c.market_cap != null
   );
   const sorted = [...withCap].sort((a, b) => b.market_cap - a.market_cap);
 
@@ -41,7 +41,7 @@ function buildSlices(categories: CategoryMarket[]): {
 
   if (rest.length > 0) {
     slices.push({
-      id: "other",
+      id: 'other',
       name: `Other (${rest.length})`,
       market_cap: otherMarketCap,
       market_cap_change_24h: null,
@@ -58,7 +58,7 @@ export function MarketCategoriesSection() {
   const { slices, total } = useMemo(() => buildSlices(data ?? []), [data]);
 
   return (
-    <Section>
+    <Section className="overflow-y-auto">
       <SectionHeading className="px-5 py-4">
         <SectionHeading.Title>Market Categories</SectionHeading.Title>
       </SectionHeading>
@@ -76,17 +76,14 @@ export function MarketCategoriesSection() {
 
       {isError && (
         <div className="p-5">
-          <ErrorState
-            message="Failed to load market categories."
-            onRetry={refetch}
-          />
+          <ErrorState message="Failed to load market categories." onRetry={refetch} />
         </div>
       )}
 
       {data && (
         <div className="flex flex-col items-center gap-4 p-5 sm:flex-row sm:gap-6">
           <div
-            className="relative h-55 w-55 shrink-0"
+            className="relative h-50 w-50 shrink-0"
             role="img"
             aria-label={`Donut chart of market cap share by category, out of ${formatCompactCurrency(total)} total across shown categories`}
           >
@@ -106,28 +103,23 @@ export function MarketCategoriesSection() {
                   {slices.map((slice, i) => (
                     <Cell
                       key={slice.id}
-                      fill={
-                        CATEGORY_CHART_COLORS[i % CATEGORY_CHART_COLORS.length]
-                      }
+                      fill={CATEGORY_CHART_COLORS[i % CATEGORY_CHART_COLORS.length]}
                     />
                   ))}
                 </Pie>
                 <Tooltip
                   formatter={(value, _name, item) => {
-                    const pct =
-                      total > 0
-                        ? ((Number(value) / total) * 100).toFixed(1)
-                        : "0";
+                    const pct = total > 0 ? ((Number(value) / total) * 100).toFixed(1) : '0';
                     return [
                       `${formatCompactCurrency(Number(value))} (${pct}%)`,
-                      item?.payload?.name ?? "",
+                      item?.payload?.name ?? '',
                     ];
                   }}
                   contentStyle={{
-                    backgroundColor: "var(--popover)",
-                    border: "1px solid var(--border)",
+                    backgroundColor: 'var(--popover)',
+                    border: '1px solid var(--border)',
                     borderRadius: 8,
-                    color: "var(--popover-foreground)",
+                    color: 'var(--popover-foreground)',
                   }}
                   wrapperStyle={{ zIndex: 1 }}
                 />
@@ -143,8 +135,7 @@ export function MarketCategoriesSection() {
 
           <ul>
             {slices.map((slice, i) => {
-              const pct =
-                total > 0 ? ((slice.market_cap / total) * 100).toFixed(1) : "0";
+              const pct = total > 0 ? ((slice.market_cap / total) * 100).toFixed(1) : '0';
               return (
                 <li key={slice.id} className="text-sm mb-2">
                   <span className="flex items-center mb-1 gap-2 truncate">
@@ -152,18 +143,11 @@ export function MarketCategoriesSection() {
                       aria-hidden="true"
                       className="h-2.5 w-2.5 shrink-0 rounded-full"
                       style={{
-                        backgroundColor:
-                          CATEGORY_CHART_COLORS[
-                            i % CATEGORY_CHART_COLORS.length
-                          ],
+                        backgroundColor: CATEGORY_CHART_COLORS[i % CATEGORY_CHART_COLORS.length],
                       }}
                     />
-                    <span className="truncate text-foreground">
-                      {slice.name}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {pct}%
-                    </span>
+                    <span className="truncate text-foreground">{slice.name}</span>
+                    <span className="text-xs text-muted-foreground">{pct}%</span>
                   </span>
                   {slice.market_cap_change_24h != null && (
                     <DeltaBadge value={slice.market_cap_change_24h} />
@@ -189,16 +173,11 @@ export function MarketCategoriesSection() {
                 <tr key={slice.id}>
                   <td>{slice.name}</td>
                   <td>{formatCompactCurrency(slice.market_cap)}</td>
-                  <td>
-                    {total > 0
-                      ? ((slice.market_cap / total) * 100).toFixed(1)
-                      : "0"}
-                    %
-                  </td>
+                  <td>{total > 0 ? ((slice.market_cap / total) * 100).toFixed(1) : '0'}%</td>
                   <td>
                     {slice.market_cap_change_24h != null
                       ? `${slice.market_cap_change_24h.toFixed(2)}%`
-                      : "N/A"}
+                      : 'N/A'}
                   </td>
                 </tr>
               ))}

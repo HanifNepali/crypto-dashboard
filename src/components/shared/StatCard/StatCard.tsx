@@ -1,6 +1,6 @@
-import { type ReactNode } from "react";
-import { type LucideIcon } from "lucide-react";
-import { DeltaBadge } from "@/components/shared/DeltaBadge";
+import { type ReactNode } from 'react';
+import { type LucideIcon } from 'lucide-react';
+import { DeltaBadge } from '@/components/shared/DeltaBadge';
 
 interface StatCardProps {
   icon: LucideIcon;
@@ -9,12 +9,7 @@ interface StatCardProps {
   children: ReactNode;
 }
 
-export function StatCard({
-  icon: Icon,
-  label,
-  delta,
-  children,
-}: StatCardProps) {
+export function StatCard({ icon: Icon, label, delta, children }: StatCardProps) {
   return (
     <div className="flex flex-col rounded-lg border border-border/70 bg-card p-5 shadow-md">
       <div className="flex items-center justify-between mb-5">
