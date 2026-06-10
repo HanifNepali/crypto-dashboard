@@ -11,7 +11,7 @@ export function TrendingCoins() {
   const { data, isPending, isError, refetch } = useTrendingCoins();
 
   return (
-    <Section className="p-5 xl:mb-4">
+    <Section className="p-5 mb-2 2xl:mb-4">
       <SectionHeading className="mb-2">
         <SectionHeading.Title size="sub">Trending Coins</SectionHeading.Title>
       </SectionHeading>

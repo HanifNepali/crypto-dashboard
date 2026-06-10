@@ -5,13 +5,16 @@ type Theme = typeof THEME_LIGHT | typeof THEME_DARK;
 
 const INITIAL_COIN_ID = 'bitcoin';
 const THEME_STORAGE_KEY = 'coingecko-dashboard-theme';
+const SIDEBAR_STORAGE_KEY = 'coingecko-dashboard-sidebar-collapsed';
 
 interface UIState {
   theme: Theme;
   selectedCoinId: string;
+  sidebarCollapsed: boolean;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
   setSelectedCoinId: (coinId: string) => void;
+  toggleSidebar: () => void;
 }
 
 function getInitialTheme(): Theme {
@@ -22,9 +25,14 @@ function getInitialTheme(): Theme {
   return prefersDark ? THEME_DARK : THEME_LIGHT;
 }
 
+function getInitialSidebarCollapsed(): boolean {
+  return localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'false';
+}
+
 export const useUIStore = create<UIState>((set, get) => ({
   theme: getInitialTheme(),
   selectedCoinId: INITIAL_COIN_ID,
+  sidebarCollapsed: getInitialSidebarCollapsed(),
   setTheme: (theme) => {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
     set({ theme });
@@ -35,4 +43,9 @@ export const useUIStore = create<UIState>((set, get) => ({
     set({ theme: next });
   },
   setSelectedCoinId: (coinId) => set({ selectedCoinId: coinId }),
+  toggleSidebar: () => {
+    const next = !get().sidebarCollapsed;
+    localStorage.setItem(SIDEBAR_STORAGE_KEY, String(next));
+    set({ sidebarCollapsed: next });
+  },
 }));

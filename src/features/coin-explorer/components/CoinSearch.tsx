@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { CoinIcon } from "@/components/shared/CoinIcon";
-import { useDebouncedValue } from "@/hooks/useDebouncedValue";
-import { useCoinSearch } from "../hooks/useCoinSearch";
-import { useUIStore } from "@/store/useUIStore";
-import { SearchInput } from "@/components/shared/SearchInput";
+import { useEffect, useRef, useState } from 'react';
+import { CoinIcon } from '@/components/shared/CoinIcon';
+import { useDebouncedValue } from '@/hooks/useDebouncedValue';
+import { useCoinSearch } from '../hooks/useCoinSearch';
+import { useUIStore } from '@/store/useUIStore';
+import { SearchInput } from '@/components/shared/SearchInput';
 
 export function CoinSearch() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const debouncedQuery = useDebouncedValue(query);
@@ -19,15 +19,12 @@ export function CoinSearch() {
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   function handleSelect(coinId: string, coinName: string) {
@@ -50,6 +47,9 @@ export function CoinSearch() {
         }}
         onFocus={() => setIsOpen(true)}
         placeholder="Search cryptocurrency..."
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') setIsOpen(false);
+        }}
       />
 
       {isOpen && shouldSearch && (
@@ -58,15 +58,9 @@ export function CoinSearch() {
           role="listbox"
           className="absolute z-10 mt-1 max-h-72 w-full overflow-auto rounded-lg border border-border bg-popover shadow-md"
         >
-          {isFetching && (
-            <li className="px-3 py-2 text-sm text-muted-foreground">
-              Searching…
-            </li>
-          )}
+          {isFetching && <li className="px-3 py-2 text-sm text-muted-foreground">Searching…</li>}
           {!isFetching && results?.length === 0 && (
-            <li className="px-3 py-2 text-sm text-muted-foreground">
-              No coins found.
-            </li>
+            <li className="px-3 py-2 text-sm text-muted-foreground">No coins found.</li>
           )}
           {!isFetching &&
             results?.map((coin) => (
@@ -77,12 +71,8 @@ export function CoinSearch() {
                   className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-accent focus:bg-accent focus:outline-none"
                 >
                   <CoinIcon src={coin.thumb} alt={coin.name} size={20} />
-                  <span className="font-medium text-foreground">
-                    {coin.name}
-                  </span>
-                  <span className="text-xs uppercase text-muted-foreground">
-                    {coin.symbol}
-                  </span>
+                  <span className="font-medium text-foreground">{coin.name}</span>
+                  <span className="text-xs uppercase text-muted-foreground">{coin.symbol}</span>
                 </button>
               </li>
             ))}

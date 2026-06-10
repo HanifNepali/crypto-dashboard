@@ -26,7 +26,7 @@ export function HeroMetricBar() {
   const btcDominance = global.market_cap_percentage.btc ?? 0;
 
   return (
-    <div className="grid md:grid-cols-2 2xl:grid-cols-4 gap-4">
+    <div className="grid md:grid-cols-2 xl:grid-cols-4! gap-4">
       <StatCard
         icon={DollarSign}
         label="Total Market Cap"
