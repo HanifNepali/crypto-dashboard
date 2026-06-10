@@ -20,7 +20,7 @@ export function ColumnVisibilityMenu({ visibleColumns, onToggle }: ColumnVisibil
       <DropdownMenuTrigger
         render={
           <Button variant="outline" size="sm" className="h-9.5">
-            <Columns3 className="mr-1 h-4 w-4" />
+            <Columns3 className="mr-1 h-4 w-4" aria-hidden="true" />
             Columns
           </Button>
         }

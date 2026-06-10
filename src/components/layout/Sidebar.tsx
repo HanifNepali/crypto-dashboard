@@ -15,7 +15,7 @@ export function Sidebar() {
           className="flex items-center gap-3 rounded-lg bg-sidebar-accent px-3 py-2 text-sm font-medium text-sidebar-accent-foreground"
           aria-current="page"
         >
-          <LayoutDashboard className="h-4 w-4" />
+          <LayoutDashboard className="h-4 w-4" aria-hidden="true" />
           Dashboard
         </a>
       </nav>

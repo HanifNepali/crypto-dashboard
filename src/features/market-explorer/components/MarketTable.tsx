@@ -38,7 +38,10 @@ function SortableHeader({
       className="inline-flex items-center gap-2 text-xs font-medium uppercase text-muted-foreground hover:text-foreground"
     >
       {label}
-      <ArrowUpDown className={`h-3.5 w-3.5 ${isActive ? 'text-crypto-accent' : ''}`} />
+      <ArrowUpDown
+        className={`h-3.5 w-3.5 ${isActive ? 'text-crypto-accent' : ''}`}
+        aria-hidden="true"
+      />
       <span className="sr-only">
         {isActive ? (direction === 'asc' ? 'sorted ascending' : 'sorted descending') : 'not sorted'}
       </span>
