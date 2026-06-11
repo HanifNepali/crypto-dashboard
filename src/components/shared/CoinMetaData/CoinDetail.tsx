@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 interface CoinDetailProps {
   name: string;
   symbol: string;
 }
 
-export function CoinDetail({ name, symbol }: CoinDetailProps) {
+export function CoinDetailComponent({ name, symbol }: CoinDetailProps) {
   return (
     <div>
       <p className="text-sm font-medium text-foreground">{name}</p>
@@ -11,3 +13,5 @@ export function CoinDetail({ name, symbol }: CoinDetailProps) {
     </div>
   );
 }
+
+export const CoinDetail = memo(CoinDetailComponent);

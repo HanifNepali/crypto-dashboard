@@ -1,21 +1,15 @@
-import { cn } from "@/lib/utils";
-import { Line, LineChart, ResponsiveContainer } from "recharts";
+import { cn } from '@/lib/utils';
+import { memo } from 'react';
+import { Line, LineChart, ResponsiveContainer } from 'recharts';
 
-export function Sparkline({
-  data,
-  className,
-}: {
-  data: number[];
-  className?: string;
-}) {
-  if (data.length === 0)
-    return <span className="text-xs text-muted-foreground">—</span>;
+export function SparklineComponent({ data, className }: { data: number[]; className?: string }) {
+  if (data.length === 0) return <span className="text-xs text-muted-foreground">—</span>;
 
   const chartData = data.map((value, i) => ({ i, value }));
 
   return (
     <div
-      className={cn("h-8 w-full", className)}
+      className={cn('h-8 w-full', className)}
       role="img"
       aria-label="7-day price trend sparkline"
     >
@@ -34,3 +28,5 @@ export function Sparkline({
     </div>
   );
 }
+
+export const Sparkline = memo(SparklineComponent);

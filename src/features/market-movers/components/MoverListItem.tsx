@@ -3,8 +3,9 @@ import { DeltaBadge } from '@/components/shared/DeltaBadge';
 import { formatCurrency } from '@/lib/formatters';
 import type { CoinMarket } from '@/lib/api/schemas/coinMarket.schema';
 import { CoinDetail, CoinWrapper } from '@/components/shared/CoinMetaData';
+import { memo } from 'react';
 
-export function MoverListItem({ coin }: { coin: CoinMarket }) {
+function MoverListItemComponent({ coin }: { coin: CoinMarket }) {
   return (
     <div className="flex items-center justify-between py-2">
       <CoinWrapper>
@@ -20,3 +21,5 @@ export function MoverListItem({ coin }: { coin: CoinMarket }) {
     </div>
   );
 }
+
+export const MoverListItem = memo(MoverListItemComponent);
