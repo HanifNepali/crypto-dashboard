@@ -1,7 +1,8 @@
-import { useThemeSync } from "@/hooks/useThemeSync";
-import { DashboardPage } from "@/pages/dashboard/DashboardPage";
+import { useThemeSync } from '@/hooks/useThemeSync';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
 
 export function App() {
   useThemeSync();
-  return <DashboardPage />;
+  return <RouterProvider router={router} />;
 }

@@ -1,8 +1,8 @@
-import logo from '@/assets/logo.png';
-
+import { Link } from 'react-router-dom';
 import { LayoutDashboard } from 'lucide-react';
 import { useUIStore } from '@/store/useUIStore';
 import { cn } from '@/lib/utils';
+import logo from '@/assets/logo.png';
 
 interface SidebarProps {
   className?: string;
@@ -22,7 +22,7 @@ export function Sidebar({ className }: SidebarProps) {
         collapsed ? 'w-16 px-2' : 'w-60 px-4'
       )}
     >
-      <div className="flex items-center px-2">
+      <Link to="/" className="flex items-center px-2">
         <img src={logo} alt="Coingecko Logo" className="rounded-full h-auto w-10" />
 
         <span
@@ -34,11 +34,11 @@ export function Sidebar({ className }: SidebarProps) {
         >
           Coingecko
         </span>
-      </div>
+      </Link>
 
       <nav className="mt-8">
-        <a
-          href="#"
+        <Link
+          to="/dashboard"
           title="Dashboard"
           className={cn(
             'flex items-center rounded-lg bg-sidebar-accent py-2 text-sm font-medium text-sidebar-accent-foreground',
@@ -55,7 +55,7 @@ export function Sidebar({ className }: SidebarProps) {
           >
             Dashboard
           </span>
-        </a>
+        </Link>
       </nav>
     </aside>
   );
