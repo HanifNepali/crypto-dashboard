@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { projectContent } from '@/data/projectContent';
 import { Check } from 'lucide-react';
+import { useDocumentTitle } from '@/hooks/useDocumentHead';
 
 function CtaLink({ label, href }: { label: string; href: string }) {
   return (
@@ -25,6 +26,7 @@ function ContentHeader({ heading }: { heading: string }) {
 }
 
 export function AboutPage() {
+  useDocumentTitle('Crypto Dashboard — Project Overview');
   const { hero, overview, techStack, decisions, scope, accessibility, finalCta, disclaimer } =
     projectContent;
 

@@ -8,8 +8,10 @@ import { MarketExplorerSection } from '@/features/market-explorer/components/Mar
 import { MarketMovers } from '@/features/market-movers';
 import { TopCryptocurrencies } from '@/features/top-cryptocurrencies';
 import { TrendingCoins } from '@/features/trending-coins/components/TrendingCoins';
+import { useDocumentTitle } from '@/hooks/useDocumentHead';
 
 export function DashboardPage() {
+  useDocumentTitle('Crypto Dashboard - Main Dashboard');
   return (
     <AppShell>
       <PanelGrid
