@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { DashboardHeader } from './DashboardHeader';
-import { DisclaimerBanner } from './DisclaimerBanner';
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -21,7 +20,6 @@ export function AppShell({ children }: { children: ReactNode }) {
           </main>
         </div>
       </div>
-      <DisclaimerBanner />
     </>
   );
 }
