@@ -14,17 +14,21 @@ export function LivePrices() {
         <SectionHeading.Title size="sub">Live Prices</SectionHeading.Title>
       </SectionHeading>
 
-      {isPending && <ListItemSkeleton rows={6} />}
+      <div className="overflow-x-auto">
+        <div className="min-w-72">
+          {isPending && <ListItemSkeleton rows={6} />}
 
-      {isError && <ErrorState message="Failed to load live prices." onRetry={refetch} />}
+          {isError && <ErrorState message="Failed to load live prices." onRetry={refetch} />}
 
-      {data && (
-        <div className="flex flex-col divide-y divide-border">
-          {data.map((coin) => (
-            <PriceListItem key={coin.id} coin={coin} />
-          ))}
+          {data && (
+            <div className="flex flex-col divide-y divide-border">
+              {data.map((coin) => (
+                <PriceListItem key={coin.id} coin={coin} />
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </Section>
   );
 }

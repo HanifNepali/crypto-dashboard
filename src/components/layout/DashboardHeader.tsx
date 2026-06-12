@@ -18,7 +18,7 @@ export function DashboardHeader() {
           onClick={toggleSidebar}
           aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          className="hidden 2xl:flex h-8 w-8 items-center justify-center cursor-pointer rounded-md text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="hidden xl:flex h-8 w-8 items-center justify-center cursor-pointer rounded-md text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <PanelLeft className="h-4 w-4" aria-hidden="true" />
         </button>

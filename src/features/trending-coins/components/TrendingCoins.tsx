@@ -16,17 +16,21 @@ export function TrendingCoins() {
         <SectionHeading.Title size="sub">Trending Coins</SectionHeading.Title>
       </SectionHeading>
 
-      {isPending && <ListItemSkeleton rows={DISPLAY_COUNT} />}
+      <div className="overflow-x-auto">
+        <div className="min-w-72">
+          {isPending && <ListItemSkeleton rows={DISPLAY_COUNT} />}
 
-      {isError && <ErrorState message="Failed to load trending coins." onRetry={refetch} />}
+          {isError && <ErrorState message="Failed to load trending coins." onRetry={refetch} />}
 
-      {data && (
-        <div className="flex flex-col divide-y divide-border">
-          {data.slice(0, DISPLAY_COUNT).map((coin, i) => (
-            <TrendingListItem key={coin.id} coin={coin} rank={i + 1} />
-          ))}
+          {data && (
+            <div className="flex flex-col divide-y divide-border">
+              {data.slice(0, DISPLAY_COUNT).map((coin, i) => (
+                <TrendingListItem key={coin.id} coin={coin} rank={i + 1} />
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </Section>
   );
 }

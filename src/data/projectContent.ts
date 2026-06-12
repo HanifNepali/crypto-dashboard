@@ -79,10 +79,10 @@ export const projectContent: ProjectContent = {
   scope: {
     heading: 'Responsive Scope',
     paragraphs: [
-      'This project is intentionally designed for mobile layout. The design target is table screens and desktop. However, the mobile design handles the layout gracefully in the form of stacked layout',
-      'The sidebar is for demonstration purpose only and so is intentionally hidden for all breakpoints below 1479px. ',
+      'This project is intentionally not designed for mobile layout. The design target is table screens and desktop. However, the mobile design handles the layout gracefully in the form of stacked content',
+      'The sidebar is for demonstration purpose only and so is intentionally hidden for all breakpoints below 1279px. ',
     ],
-    breakpoint: 'Above 1479px',
+    breakpoint: 'Above 1279px',
   },
   accessibility: {
     heading: 'Accessibility Considerations',

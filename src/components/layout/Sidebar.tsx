@@ -18,7 +18,7 @@ export function Sidebar({ className }: SidebarProps) {
     <aside
       className={cn(
         className,
-        'hidden h-full 2xl:flex flex-col border-r border-border bg-sidebar py-6 transition-[width,padding] duration-150 ease-linear motion-reduce:transition-none',
+        'hidden h-screen xl:flex flex-col sticky left-0 top-0 bottom-0 border-r border-border bg-sidebar py-6 transition-[width,padding] duration-150 ease-linear motion-reduce:transition-none',
         collapsed ? 'w-16 px-2' : 'w-60 px-4'
       )}
     >
