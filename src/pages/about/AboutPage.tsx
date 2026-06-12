@@ -5,9 +5,16 @@ import { Check } from 'lucide-react';
 import { useDocumentTitle } from '@/hooks/useDocumentHead';
 
 function CtaLink({ label, href }: { label: string; href: string }) {
+  function prefetchDashboard() {
+    if (href === '/dashboard') {
+      import('@/pages/dashboard/DashboardPage');
+    }
+  }
   return (
     <Link
       to={href}
+      onMouseEnter={prefetchDashboard}
+      onFocus={prefetchDashboard}
       className="inline-flex items-center justify-center rounded-sm bg-crypto-accent px-6 py-3 text-[15px] font-semibold text-black transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {label}
