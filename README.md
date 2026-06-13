@@ -1,8 +1,8 @@
 # Crypto Dashboard
 
-**Live demo:** _add the Vercel URL here after deployment_
+**Live app:** [https://crypto-dashboard-sooty-mu.vercel.app/](https://crypto-dashboard-sooty-mu.vercel.app/)
 
-> **Unofficial, non-commercial project,** built for portfolio purposes. Market data is provided by the public [CoinGecko](https://www.coingecko.com/) API. This project is not affiliated with, endorsed by, or sponsored by CoinGecko. Nothing on this dashboard constitutes financial advice.
+ **Unofficial, non-commercial project,** built for portfolio purposes. Market data is provided by the public [CoinGecko](https://www.coingecko.com/) API. This project is not affiliated with, endorsed by, or sponsored by CoinGecko. Nothing on this dashboard constitutes financial advice.
 
 ## 1. Project Overview
 
