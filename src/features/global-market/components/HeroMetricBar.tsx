@@ -5,6 +5,10 @@ import { ErrorState } from '@/components/shared/ErrorState';
 import { useGlobalMarket } from '../hooks/useGlobalMarket';
 import { formatCompactCurrency, formatCompactNumber, formatPercentage } from '@/lib/formatters';
 
+function StatCardFigure({ children }: { children: React.ReactNode }) {
+  return <p className="text-3xl xl:text-4xl font-bold text-foreground">{children}</p>;
+}
+
 export function HeroMetricBar() {
   const { data: response, isPending, isError, refetch } = useGlobalMarket();
 
@@ -32,32 +36,27 @@ export function HeroMetricBar() {
         label="Total Market Cap"
         delta={global.market_cap_change_percentage_24h_usd}
       >
-        <p className="text-3xl font-bold text-foreground">
-          {formatCompactCurrency(global.total_market_cap.usd)}
-        </p>
+        <StatCardFigure>{formatCompactCurrency(global.total_market_cap.usd)}</StatCardFigure>
       </StatCard>
 
       <StatCard icon={ChartArea} label="Market Cap Change / BTC Dominance">
         <div className="flex items-center gap-3">
-          <p className="text-3xl font-bold text-foreground">
+          <StatCardFigure>
             {formatPercentage(global.market_cap_change_percentage_24h_usd)}
-          </p>
+          </StatCardFigure>
           <span className="text-sm text-muted-foreground">
             BTC {formatPercentage(btcDominance)}
           </span>
         </div>
       </StatCard>
+
       <StatCard icon={BarChart3} label="24h Trading Volume">
-        <p className="text-3xl font-bold text-foreground">
-          {formatCompactCurrency(global.total_volume.usd)}
-        </p>
+        <StatCardFigure>{formatCompactCurrency(global.total_volume.usd)}</StatCardFigure>
       </StatCard>
 
       <StatCard icon={Activity} label="Market Activity">
         <div className="flex items-center gap-3">
-          <p className="text-3xl font-bold text-foreground">
-            {formatCompactNumber(global.active_cryptocurrencies)}
-          </p>
+          <StatCardFigure>{formatCompactNumber(global.active_cryptocurrencies)}</StatCardFigure>
           <span className="text-sm text-muted-foreground">
             {formatCompactNumber(global.markets)} markets
           </span>
