@@ -100,5 +100,5 @@ export const projectContent: ProjectContent = {
     cta: { label: 'View the dashboard', href: '/dashboard' },
   },
   disclaimer:
-    'Disclaimer: This project is an unofficial, non-commercial build created for portfolio purposes. Market data is provided by the public CoinGecko API. This project is not affiliated with, endorsed by, or sponsored by CoinGecko. Nothing on this dashboard constitutes financial advice.',
+    'This project is an unofficial, non-commercial build created for portfolio purposes. Market data is provided by the public CoinGecko API. This project is not affiliated with, endorsed by, or sponsored by CoinGecko. Nothing on this dashboard constitutes financial advice.',
 };

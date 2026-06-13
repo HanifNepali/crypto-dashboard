@@ -33,7 +33,7 @@ function ContentHeader({ heading }: { heading: string }) {
 }
 
 export function AboutPage() {
-  useDocumentTitle('Crypto Dashboard — Project Overview');
+  useDocumentTitle('CoinGecko — Project Overview');
   const { hero, overview, techStack, decisions, scope, accessibility, finalCta, disclaimer } =
     projectContent;
 
@@ -136,7 +136,10 @@ export function AboutPage() {
           <CtaLink label={finalCta.cta.label} href={finalCta.cta.href} />
         </section>
 
-        <p className="text-[12px] leading-relaxed text-foreground/80">{disclaimer}</p>
+        <p className="text-[13px] leading-relaxed text-foreground/80">
+          <span className="font-medium">Disclaimer:</span>
+          {disclaimer}
+        </p>
       </main>
     </div>
   );

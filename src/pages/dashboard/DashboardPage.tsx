@@ -11,7 +11,7 @@ import { TrendingCoins } from '@/features/trending-coins/components/TrendingCoin
 import { useDocumentTitle } from '@/hooks/useDocumentHead';
 
 export function DashboardPage() {
-  useDocumentTitle('Crypto Dashboard - Main Dashboard');
+  useDocumentTitle('CoinGecko - Main Dashboard');
   return (
     <AppShell>
       <PanelGrid
