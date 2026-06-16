@@ -104,6 +104,8 @@ This project runs entirely against CoinGecko's free public API, which has real l
 - **`/coins/markets`'s `order` parameter only supports `market_cap`/`volume`/`id`** — not price or percentage change. Market Data Explorer uses a hybrid model: Rank/Market Cap/Volume sorting and category filtering use true server-side pagination; searching switches to a small, client-paginated result set resolved through `/search` → `ids`.
 - **Category filter IDs are resolved at runtime** via `/coins/categories/list` rather than hardcoded, since CoinGecko's category set changes over time.
 
+**How the API Calls work** - see [`docs/API_ARCHITECTURE.md`](./docs/API_ARCHITECTURE.md) for the full request flow in both local development and the deployed Vercel environment, including why this is necessary (CoinGecko's CORS behavior).
+
 ## 8. Testing
 
 ```bash
@@ -135,6 +137,7 @@ CI runs both suites on every push and pull request against `main` and `master` v
 - **Dashboard-only dependencies** (TanStack Query, Recharts) are isolated behind the dashboard's dynamic import boundary.
 - **Preconnect hints** for the CoinGecko API and image CDN
 - **Memoized list/row components** for frequently-polled sections (Live Prices, Market Explorer rows) so background refetches don't force unnecessary re-renders
+
 
 ## 11. License
 
