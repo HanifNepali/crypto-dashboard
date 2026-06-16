@@ -17,13 +17,13 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api/coingecko': {
-          target: env.VITE_COINGECKO_API_BASE_URL || 'https://api.coingecko.com/api/v3',
+          target: env.COINGECKO_API_BASE_URL || 'https://api.coingecko.com/api/v3',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api\/coingecko/, ''),
           // Injects the API key header locally just like the Vercel serverless file does
           configure: (proxy) => {
             proxy.on('proxyReq', (proxyReq) => {
-              const apiKey = env.VITE_COINGECKO_API_KEY;
+              const apiKey = env.COINGECKO_API_KEY;
               if (apiKey) {
                 proxyReq.setHeader('x-cg-demo-api-key', apiKey);
               }

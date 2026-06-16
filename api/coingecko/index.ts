@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const COINGECKO_BASE_URL =
-  process.env.VITE_COINGECKO_API_BASE_URL || 'https://api.coingecko.com/api/v3';
+const COINGECKO_BASE_URL = process.env.COINGECKO_API_BASE_URL || 'https://api.coingecko.com/api/v3';
 const CACHE_SECONDS = 30;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -11,7 +10,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const targetUrl = `${COINGECKO_BASE_URL}/${pathSegments}${search}`;
 
-  const apiKey = process.env.VITE_COINGECKO_API_KEY;
+  const apiKey = process.env.COINGECKO_API_KEY;
 
   try {
     const upstream = await fetch(targetUrl, {

@@ -93,8 +93,8 @@ npm run preview
 
 | Variable                     | Description                                                                                      |
 | ----------------------------- | -------------------------------------------------------------------------------------------------- |
-| `VITE_COINGECKO_API_BASE_URL` | CoinGecko API base URL (defaults to the public endpoint)                                          |
-| `VITE_COINGECKO_API_KEY`      | Optional — CoinGecko Demo API key. The public endpoint works without one, at lower rate limits.   |
+| `COINGECKO_API_BASE_URL` | CoinGecko API base URL (defaults to the public endpoint)                                          |
+| `COINGECKO_API_KEY`      | Optional — CoinGecko Demo API key. The public endpoint works without one, at lower rate limits.   |
 
 ## 7. API Notes — Free-Tier Constraints
 
